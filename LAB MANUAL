@@ -1,0 +1,700 @@
+
+
+ 
+					
+
+Department of Computer science and  Engineering
+
+
+
+
+
+
+Lab Manual
+
+(CS232– Free and Open Source Software Lab)
+
+
+
+
+
+
+
+Prepared by:
+_Sruthi N Paul______
+
+Verified by:
+________________________
+
+Last Updated on:  _________________________
+
+
+
+
+
+ (CS232– Free and Open Source Software Lab) 
+List of Exercises/Experiments: 
+
+1.	Getting started with Linux basic commands and directory structure, execute file, directory operations. 
+
+2.	Linux commands for redirection, pipes, filters, job control, file ownership, file permissions, links and file system hierarchy. 
+
+3.	Shell Programming : Write shell script to show various system configuration like 
+•	Currently logged user and his logname 
+•	Your current shell 
+•	Your home directory 
+•	Your operating system type 
+•	Your current path setting 
+•	Your current working directory 
+•	Show Currently logged number of users 
+
+4.	Write shell script to show various system configuration like 
+•	About your OS and version, release number, kernel version 
+•	Show all available shells 
+•	Show mouse settings 
+•	Show computer CPU information like processor type, speed etc 
+•	Show memory information 
+•	Show hard disk information like size of hard-disk, cache memory, model etc 
+•	File system (Mounted) 
+
+5.	Write shell script to implement a menu driven calculator with following functions.
+1. Addition 
+2. Subtraction 
+3. Multiplication 
+4. Division 
+5. Modulus 
+
+6.	Write a script called addnames  that is to be called as follows, where classlist is the name of the classlist file, and username is a particular student's username. 
+./addnames classlist username .      The script should 
+•	check that the correct number of arguments was received and print an usage message if not, 
+•	check whether the classlist file exists and print an error message if not, 
+•	check whether the username is already in the file, and then either 
+•	print a message stating that the name already existed, or 
+•	add the name to the end of the list. 
+
+
+
+7.	Version Control System setup and usage using GIT. 
+•	Creating a repository 
+•	Checking out a repository 
+•	Adding content to the repository 
+•	Committing the data to a repository
+•	Updating the local copy 
+•	Comparing different revisions 
+•	Revert 
+•	Conflicts and Solving a conflict 
+
+8.	Perform simple text processing using Perl, Awk 
+
+9.	Shell script to implement a script which kills every process which uses more than a specified value of memory or CPU and is run upon system start.
+
+10.	Advanced linux commands curl, wget, ftp, ssh and grep 
+
+11.	Running PHP : simple applications like login forms after setting up a LAMP stack
+ 
+12.	GUI Programming: Create scientific calculator – using any one of Gambas, GTK, QT 
+
+13.	Virtualisation environment (e.g., xen, kqemu, virtualbox or lguest) to test applications, new kernels and isolate applications. It could also be used to expose students to other alternate OS such as freeBSD 
+
+14.	Kernel configuration, compilation and installation : Download / access the latest kernel source code from kernel.org, compile the kernel and install it in the local system. Try to view the source code of the kernel 
+
+15.	Installing various software packages. Either the package is yet to be installed or an older version is present. The student can practice installing the latest version. ( Internet access is needed). 
+	Install samba and share files to windows 
+	Install Common Unix Printing System(CUPS) 
+
+
+
+
+
+
+
+
+Program No. 1
+
+Date:   ___________
+
+
+AIM:
+1.	Getting started with Linux basic commands and directory structure, execute file, directory operations. 
+.
+SOFTWARE  REQUIRED:
+1)	Linux. (UBUNTU 14.04)
+THEORY:
+What is Unix ?
+The Unix operating system is a set of programs that act as a link between the computer and the user.
+The computer programs that allocate the system resources and coordinate all the details of the computer's internals is called the operating system or the kernel.
+Users communicate with the kernel through a program known as the shell. The shell is a command line interpreter; it translates commands entered by the user and converts them into a language that is understood by the kernel.
+•	Unix was originally developed in 1969 by a group of AT&T employees Ken Thompson, Dennis Ritchie, Douglas McIlroy, and Joe Ossanna at Bell Labs.
+•	There are various Unix variants available in the market. Solaris Unix, AIX, HP Unix and BSD are a few examples. Linux is also a flavor of Unix which is freely available.
+•	Several people can use a Unix computer at the same time; hence Unix is called a multiuser system.
+•	A user can also run multiple programs at the same time; hence Unix is a multitasking environment.
+•	Kernel − The kernel is the heart of the operating system. It interacts with the hardware and most of the tasks like memory management, task scheduling and file management.
+•	Shell − The shell is the utility that processes your requests. When you type in a command at your terminal, the shell interprets the command and calls the program that you want. The shell uses standard syntax for all commands. C Shell, Bourne Shell and Korn Shell are the most famous shells which are available with most of the Unix variants.
+•	Commands and Utilities − There are various commands and utilities which you can make use of in your day to day activities. cp, mv, catand grep, etc. are few examples of commands and utilities. There are over 250 standard commands plus numerous others provided through 3rd party software. All the commands come along with various options.
+•	Files and Directories − All the data of Unix is organized into files. All files are then organized into directories. These directories are further organized into a tree-like structure called the filesystem.
+.
+
+Familiarization of Linux commands :
+Listing Files
+To list the files and directories stored in the current directory, use the following command −
+$ls
+Here is the sample output of the above command −
+$ls
+
+bin        hosts  lib     res.03
+ch07       hw1    pub     test_results
+ch07.bak   hw2    res.01  users
+docs       hw3    res.02  work
+The command ls supports the -l option which would help you to get more information about the listed files −
+$ls -l
+total 1962188
+
+drwxrwxr-x  2 amrood amrood      4096 Dec 25 09:59 uml
+-rw-rw-r--  1 amrood amrood      5341 Dec 25 08:38 uml.jpg
+drwxr-xr-x  2 amrood amrood      4096 Feb 15  2006 univ
+drwxr-xr-x  2 root   root        4096 Dec  9  2007 urlspedia
+-rw-r--r--  1 root   root      276480 Dec  9  2007 urlspedia.tar
+drwxr-xr-x  8 root   root        4096 Nov 25  2007 usr
+
+Creating Files
+You can use the vi editor to create ordinary files on any Unix system. You simply need to give the following command −
+$touch  filename    or
+$cat  > filename-T o type few lines. Ctrl D to save
+Display Content of a File
+You can use the cat command to see the content of a file. Following is a simple example to see the content of the above created file −
+$ cat filename
+
+Counting Words in a File
+You can use the wc command to get a count of the total number of lines, words, and characters contained in a file. Following is a simple example to see the information about the file created above −
+$ wc filename
+2  19 103 filename
+
+Copying Files
+To make a copy of a file use the cp command. The basic syntax of the command is −
+$ cp source_file destination_file
+Following is the example to create a copy of the existing file filename.
+$ cp filename copyfile
+$
+You will now find one more file copyfile in your current directory. This file will exactly be the same as the original file filename.
+Renaming Files
+To change the name of a file, use the mv command. Following is the basic syntax −
+$ mv old_file new_file
+The following program will rename the existing file filename to newfile.
+$ mv filename newfile
+
+Deleting Files
+To delete an existing file, use the rm command. Following is the basic syntax −
+$ rm filename
+
+Home Directory
+The directory in which you find yourself when you first login is called your home directory.
+You will be doing much of your work in your home directory and subdirectories that you'll be creating to organize your files.
+
+Cd   .       Current Directory
+Cd  ..       Parent Directory
+Cd  ~       Users  Home Directory
+
+Listing Directories
+To list the files in a directory, you can use the following syntax −
+$ls dirname
+Following is the example to list all the files contained in /usr/local directory −
+$ls /usr/local
+
+X11       bin          gimp       jikes       sbin
+ace       doc          include    lib         share
+atalk     etc          info       man         ami
+
+Creating Directories
+We will now understand how to create directories. Directories are created by the following command −
+$mkdir dirname
+
+Removing Directories
+Directories can be deleted using the rmdir command as follows −
+$rmdir dirname
+
+Changing Directories
+You can use the cd command to do more than just change to a home directory. You can use it to change to any directory by specifying a valid absolute or relative path. The syntax is as given below −
+$cd dirname
+
+Renaming Directories
+The mv (move) command can also be used to rename a directory. The syntax is as follows −
+$mv olddir newdir
+
+.
+
+
+
+
+Program No. : 2
+
+Aim: Linux commands for redirection, pipes, filters, job control, file ownership, file permissions, links and file system hierarchy. 
+
+
+Piping Commands Together
+The pipe character, “|”, is used to chain two or more commands together. The output of the first command is “piped” into the next program, and if there is a second pipe, the output is sent to the third program, etc.
+For example: ls -la /usr/bin | less
+In this example, we run the command “ls -la /usr/bin”, which gives us a long listing of all of the files in /usr/bin. Because the output of this command is typically very long, we pipe the output to a program called “less”, which displays the output for us one screen at a time.
+
+Redirection of Standard output/input or Input – Output redirection
+Mostly all command gives output on screen or take input from keyboard, but in Linux it's possible to send output to file or to read input from file. There are three main redirection symbols >,>>,<
+
+(1) > Redirector Symbol
+Syntax: Linux-command > filename
+To output Linux-commands result to file. Note that If file already exist, it will be overwritten else new file is created.
+
+(2) >> Redirector Symbol
+Syntax: Linux-command >> filename
+To output Linux-commands result to END of file. Note that If file exist , it will be opened and new information / data will be written to END of file, without losing previous information/data, And if file is not exist, then new file is created.
+
+(3) < Redirector Symbol
+Syntax: Linux-command < filename
+To take input to Linux-command from file instead of key-board.
+
+Tee
+Sends the output in two directions at a time
+Syntax:
+tee [options ] filename .
+Ex : $ls –l |tee file2 à It will list all the files in the current directory and as well stores in the file called file2.
+$ls –l |tee –a file2 à It will append the list to file2.
+
+Filters
+When a program performs operations on input and writes the result to the standard output, it is called a filter. One of the most common uses of filters is to restructure output.
+
+Grep
+Grep scans the output line per line, searching for matching patterns. All lines containing the pattern will be printed to standard output. This behavior can be reversed using the -v option.
+The grep command, like most commands, is case sensitive. Use the -i option to make no difference between upper and lower case. A lot of GNU extensions are available as well, such as --colour, which is helpful to highlight searchterms in long lines, and --after-context, which prints the number of lines after the last matching line.
+You can issue a recursive grep that searches all subdirectories of encountered directories using the -r option. As usual, options can be combined. Regular expressions can be used to further detail the exact character matches you want to select out of all the input lines. The best way to start with regular expressions is indeed to read the grep documentation.
+
+Cut
+The cut command takes a vertical slice of a file, printing only the specified columns or fields. Like the sort command, the cut command defines a field as a word set off by blanks, unless you specify your own delimiter. It's easiest to think of a column as just the nth character on each line. In other words, "column 5" consists of the fifth character of each line.
+ 	Consider a slight variation on the company.data file we've been playing with in this section:
+406378:Sales:Itorre:Jan
+031762:Marketing:Nasium:Jim
+636496:Research:Ancholie:Mel
+396082:Sales:Jucacion:Ed
+If you want to print just columns 1 to 6 of each line (the employee serial numbers), use the -c1-6 flag, as in this command:
+cut -c1-6 company.data
+406378
+031762
+636496
+396082
+If you want to print just columns 4 and 8 of each line (the first letter of the department and the fourth digit of the serial number), use the -c4,8 flag, as in this command:
+cut -c4,8 company.data
+3S
+7M
+4R
+0S
+And since this file obviously has fields delimited by colons, we can pick out just the last names by specifying the -d: and -f3 flags, like this:
+cut -d: -f3 company.data
+Itorre
+Nasium
+Ancholie
+Jucacion
+It's often the case that you want to use a space as the delimiter. To do so, you must put the delimiter in single quotes, like this: -d' '
+Also, when you want to cut from a starting point to the end of the line, just leave off the final field number, as shown in the example below.
+Let's say this is your test.txt file:
+abc def ghi jkl
+mno pqr stu vwx
+yz1 234 567 890
+To cut only columns 2-END, do this: cut -d' ' -f2- test.txt
+And the results are:
+def ghi jkl
+pqr stu vwx
+234 567 890
+Here is a summary of the most common flags for the cut command:
+-c [n | n,m | n-m]	Specify a single column, multiple columns (separated by a comma), or range of columns (separated by a dash).
+-f [n | n,m | n-m]	Specify a single field, multiple fields (separated by a comma), or range of fields (separated by a dash).
+-dc	Specify the field delimiter.
+-s	Suppress (don't print) lines not containing the delimiter.
+
+Paste
+Merge corresponding or subsequent lines of files.
+Syntax
+paste [-s] [-d list] file
+-s	Concatenate all of the lines of each separate input file in command line order. The NEWLINE character of every line except the last line in each input file will be replaced with the TAB character, unless otherwise specified by the -d option.
+-d list	Unless a backslash character (\) appears in list, each character in list is an element specifying a delimiter character. If a backslash character appears in list, the backslash character and one or more characters following it are an element specifying a delimiter character as described below. These elements specify one or more delimiters to use, instead of the default TAB character, to replace the NEWLINE character of the input lines. The elements in list are used circularly; that is, when the list is exhausted the first element from the list is reused.
+When the -s option is specified:
+•	The last newline character in a file will not be modified.
+•	The delimiter will be reset to the first element of list after each file operand is processed.
+When the option is not specified:
+•	The NEWLINE characters in the file specified by the last file will not be modified.
+•	The delimiter will be reset to the first element of list each time a line is processed from each file.
+If a backslash character appears in list, it and the character following it will be used to represent the following delimiter characters:
+\n	Newline character.
+\t	Tab character.
+\\	Backslash character.
+\0	Empty string (not a null character). If \0 is immediately followed by the character x, the character X, or any character defined by the LC_CTYPE digit keyword, the results are unspecified.
+If any other characters follow the backslash, the results are unspecified.
+file	A path name of an input file. If - is specified for one or more of the file s, the standard input will be used; the standard input will be read one line at a time, circularly, for each instance of -. Implementations support pasting of at least 12 file operands.
+Uniq
+It removes duplicate lines from a uniqed file.
+
+uniq [-cdu] [-f skip-fields] [-s skip-chars] [-w check-chars] [-#skip-fields] [+#skip-chars] [--count] [--repeated] [--unique] [--skip-fields=skip-fields] [--skip-chars=skip-chars] [--check-hars=check-chars] [--help] [--version] [infile] [outfile]
+
+uniq prints the unique lines in a sorted file, retaining only one of a run of matching lines. Optionally, it can show only lines that appear exactly once, or lines that appear more than once. uniq requires sorted input since it compares only consecutive lines.
+Here shows the options for uniq:
+-u,--unique	Only print unique lines.
+-d,--repeated	Only print duplicate lines.
+-c,--count	Print the number of times each line occurred along with the line.
+-number,-f,--skip-fields=number	In this option, number is an integer representing the number of fields to skip over before checking for uniqueness. The first number fields, along with any blanks found before number fields is reached, are skipped over and not counted. Fields are defined as a strings of non-space, non-tab characters, that are separated from each other by spaces and tabs.
++number,-s,--skip-chars=number	In this option, number is an integer representing the number of characters to skip over before checking for uniqueness. The first number characters, along with any blanks found before number characters is reached, are skipped over and not counted. If you use both the field and character skipping options, fields are skipped over first.
+-w,--check-chars=number	Specify the number of characters to compare in the lines, after skipping any specified fields and characters. Normally the entire rest of the lines are compared.
+--help 	Print a usage message and exit with a status code indicating success.
+--version	Print version information on standard output then exit.
+
+Consider an example:
+ 	Let's say you're a publisher with an inventory of all your books in the my.books file shown here:
+Atopic Dermatitis for Dummies
+Atopic Dermatitis for Dummies
+Chronic Rhinitis Unleashed
+Chronic Rhinitis Unleashed
+Chronic Rhinitis Unleashed
+Learn Nasal Endoscopy in 21 Days
+To remove all the duplicates from the list of books, use this command:
+uniq my.books
+Atopic Dermatitis for Dummies
+Chronic Rhinitis Unleashed
+Learn Nasal Endoscopy in 21 Days
+If you want to print only the book titles that are not duplicated (to find out which books you have one copy of), add the -u flag, like this:
+uniq -u my.books
+Learn Nasal Endoscopy in 21 Days
+Conversely, you might want to exclude the titles that appear only once. If so, add the -d flag, like this:
+uniq -d my.books
+Atopic Dermatitis for Dummies
+Chronic Rhinitis Unleashed
+Now let's take inventory. To summarize the list of books and add a count of the number of times each one appears in the list, add the -c flag, like this:
+uniq -c my.books
+2 Atopic Dermatitis for Dummies
+3 Chronic Rhinitis Unleashed
+1 Learn Nasal Endoscopy in 21 Days
+Note that the uniq command does not sort the input file, so you may want to use the sort command to prepare the data for uniq in advance. (See the end of this section for an example.)
+Here's a recap of the flags you can use with the uniq command:
+-u	Print only lines that appear once in the input file.
+-d	Print only the lines that appear more than once in the input file.
+-c	Precede each output line with a count of the number of times it was found.
+
+nl
+It gives the number lines of files  
+nl [OPTION]... [FILE]...  
+Write each FILE to standard output, with line numbers added. With no FILE, or when FILE is -, read standard input.
+Mandatory arguments to long options are mandatory for short options too.
+-b, --body-numbering=STYLE	use STYLE for numbering body lines
+-d, --section-delimiter=CC	use CC for separating logical pages
+-f, --footer-numbering=STYLE	use STYLE for numbering footer lines
+-h, --header-numbering=STYLE	use STYLE for numbering header lines
+-i, --page-increment=NUMBER	line number increment at each line
+-l, --join-blank-lines=NUMBER	group of NUMBER empty lines counted as one
+-n, --number-format=FORMAT	insert line numbers according to FORMAT
+-p, --no-renumber	do not reset line numbers at logical pages
+-s, --number-separator=STRING	add STRING after (possible) line number
+-v, --first-page=NUMBER	first line number on each logical page
+-w, --number-width=NUMBER	use NUMBER columns for line numbers
+--help	display this help and exit
+--version	output version information and exit
+			
+By default, selects -v1 -i1 -l1 -sTAB -w6 -nrn -hn -bt -fn. CC are two delimiter characters for separating logical pages, a missing second character implies :.
+Type \\ for \. STYLE is one of:
+a:	number all lines
+t:	number only nonempty lines
+n:	number no lines
+pREGEXP:	number only lines that contain a match for REGEXP
+FORMAT is one of:
+ln:	left justified, no leading zeros
+rn:	right justified, no leading zeros
+rz:	right justified, leading zeros
+
+Join     
+             The join command is like the paste command—only a bit more intelligent. The joincommand takes two files and merges their columns—as long as both files share a common field. In other words, for join to work properly, there must be a common field for each row of data. The common field functionality will keep a user from merging incorrect datatogether. The join utility is a more advanced tool than paste for creating either rows or columns of data that are combined from two separate files.
+This  join lines of two files on a common field  
+
+join [OPTION]... FILE1 FILE2  
+For each pair of input lines with identical join fields, write a line to standard output. The default join field is the first, delimited by whitespace. When FILE1 or FILE2 (not both) is -, read standard input.
+-a SIDE	print unpairable lines coming from file SIDE
+-e EMPTY	replace missing input fields with EMPTY
+-i	--ignore-case ignore differences in case when comparing fields
+-j FIELD	(obsolescent) equivalent to `-1 FIELD -2 FIELD'
+-j1 FIELD	(obsolescent) equivalent to `-1 FIELD'
+-j2 FIELD	(obsolescent) equivalent to `-2 FIELD'
+-o FORMAT	obey FORMAT while constructing output line
+-t CHAR	use CHAR as input and output field separator
+-v SIDE	like -a SIDE, but suppress joined output lines
+-1 FIELD	join on this FIELD of file 1
+-2 FIELD	join on this FIELD of file 2
+--help	display this help and exit
+--version output	version information and exit
+	
+Unless -t CHAR is given, leading blanks separate fields and are ignored, else fields are separated by CHAR. Any FIELD is a field number counted from 1. FORMAT is one or more comma or blank separated specifications, each being `SIDE.FIELD' or `0'. Default FORMAT outputs the join field, the remaining fields from FILE1, the remaining fields from FILE2, all separated by CHAR.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Program No  :3
+
+Aim: Shell Programming : Write shell script to show various system configuration like 
+•	Currently logged user and his logname 
+•	Your current shell 
+•	Your home directory 
+•	Your operating system type 
+•	Your current path setting 
+•	Your current working directory 
+•	Show Currently logged number of users 
+
+
+Program:
+
+## STUDYING VARIOUS SYSTEM CONFIGURATIONS ##
+#!/usr/bin/env bash
+x="y";
+until [ $x == "n" ]
+do
+echo "MENU";
+echo "1.About OS & Version,release number,kernel version";
+echo "2.All available shell";
+echo "3.Mouse setting";
+echo "4.Processor type speed";
+echo "5.Memory information";
+echo "6.size of hardisk, cache memory,model";
+echo "7.file system(mounted)";
+read -p "Enter Your Choice" z;
+case $z in
+1) echo OS & Version is:  lsb_release -a ;
+   echo OS release number  is:  uname -r
+   echo kernel  Version is:  uname -v
+   echo "Do you want to continue";
+   read x;
+;;
+2) cat /etc/shells ;
+   echo "Do you want to continue";
+   read x;
+;;
+3) xinput --list --short ;
+   echo "Do you want to continue";
+   read x;
+;;
+4) cat /proc/cpuinfo ;
+   echo "Do you want to continue";
+   read x;
+;;
+5) cat /proc/meminfo ;
+   echo "Do you want to continue";
+   read x;
+;;
+6) df ;
+   df -h ;
+   free -m ;
+   echo "Do you want to continue";
+   read x;
+;;
+7) mount -t ;
+   echo "Do you want to continue";
+   read x;
+;;
+*) echo "Invalid Key";
+   echo "Do you want to continue";
+   read x;
+;;
+esac 
+done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Program No. : 4
+
+Aim: Write shell script to implement a menu driven calculator with following functions.
+1. Addition 
+2. Subtraction 
+3. Multiplication 
+4. Division 
+5. Modulus 
+
+ Program:
+##..... SIMPLE CALCULATOR IMPLEMENTATION…##
+echo "Calculator implementation";
+read -p "enter the number " x;
+read -p "enter another number" y;
+echo $x;
+echo $y;
+echo "enter your choice";
+echo "1.addition ,2.multiplication,3.subtraction."
+echo "4.reminder,5.quotient";
+read -p "enter your choice" p;
+case $p in
+1)echo "addition";
+z=`expr $x + $y`;
+echo $z;
+;;
+2) echo "multiplication";
+z=`expr $x \* $y`;
+echo $z;
+;;
+3) echo "subtraction";
+z=`expr $x-$y`;
+echo $z;
+;;
+4) echo "reminder"
+z=`expr $x % $y`;
+echo $z;
+;;
+5) echo "quotient";
+z=`expr $x / $y`;
+echo $z; 
+esac
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Program No. : 5
+
+AIM :
+
+To write a shell script to show various system configuration like about your OS & version , release number kernel version
+1.show all available shells
+2.show mouse settings
+3.show computer cpu information like processor type,speed etc.
+4.show memory information.
+5.show harddisk information like size of hardisk,cache memory,model.
+6.File system
+
+##... various system configuration..##
+x="y";
+until [ $x == "n" ]
+do
+echo "Menu"
+echo "1.OS & version , release number , kernel version"
+echo "2.all available shell"
+echo "3.mouse settings"
+echo "4.processor type speed".
+echo "5.memory information"
+echo "6.size of hardisk, cache memory , model"
+echo "7.file system "
+echo "enter your option"
+read z;
+case $z in
+1) lsb_release  -a
+   uname -r
+   uname -v 
+   echo "do you want to continue"
+   read x;   
+   ;;
+2) cat /etc/shells
+   echo "do you want to continue"
+   read x;      
+   ;;
+3) xinput --list --short
+   echo "do you want to continue"
+   read x;   
+   ;;
+4) cat /proc/cpuinfo
+   echo "do you want to continue"
+   read x;   
+   ;;
+5) cat /proc/meminfo
+   echo "do you want to continue"
+   read x;   
+   ;;
+6) df
+   df -h
+   free -m  
+   echo "do you want to continue"
+   read x;   
+   ;;
+7) mount -t
+   echo "do you want to continue"
+   read x;   
+    ;;
+*)  echo "invalid option"
+   echo "do you want to continue"   
+read x;   
+    ;;
+esac
+done
+
+Output:
+Menu
+1.OS & version , release number , kernel version
+2.all available shell
+3.mouse settings
+4.processor type speed.
+5.memory information
+6.size of hardisk, cache memory , model
+7.file system 
+enter your option    2
+# /etc/shells: valid login shells
+/bin/sh
+/bin/dash
+/bin/bash
+/bin/rbash
+do you want to continue
+n         //exits program
+
+
+
+
+
+
+
+
+
+
+
+
